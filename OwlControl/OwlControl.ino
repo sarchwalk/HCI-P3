@@ -1,28 +1,11 @@
-// Adafruit IO Servo Example
-// Tutorial Link: https://learn.adafruit.com/adafruit-io-basics-servo
-//
-// Adafruit invests time and resources providing this open source code.
-// Please support Adafruit and open source hardware by purchasing
-// products from Adafruit!
-//
-// Written by Todd Treece for Adafruit Industries
-// Copyright (c) 2016-2017 Adafruit Industries
-// Licensed under the MIT license.
-//
-// All text above must be included in any redistribution.
-
-/************************** Configuration ***********************************/
-
-// edit the config.h tab and enter your Adafruit IO credentials
-// and any additional configuration needed for WiFi, cellular,
-// or ethernet clients.
-#include "config.h"
-
-/************************ Example Starts Here *******************************/
+/**
+ *    SPOOKY OWL
+ *    By Sarah, Erika, and Valerie
+ *    
+ *    CPSC 581 - Human Computer Interaction II 
+ */
 
 #if defined(ARDUINO_ARCH_ESP32)
-  // ESP32Servo Library (https://github.com/madhephaestus/ESP32Servo)
-  // installation: library manager -> search -> "ESP32Servo"
   #include <ESP32Servo.h>
 #else
   #include <Servo.h>
@@ -31,22 +14,22 @@
 #include <FastLED.h>
 
 
-
 #define SERVO_PIN 4
 #define LED_PIN 13
 #define SOUND_PIN 5
-
 
 #define NUM_LEDS    2
 #define BRIGHTNESS  64
 #define LED_TYPE    WS2811
 #define COLOR_ORDER GRB
 #define UPDATES_PER_SECOND 100
+
+
 CRGB leds[NUM_LEDS];
 
 Servo servo;
 
-// set up the 'servo' feed
+// setting up feed
 AdafruitIO_Feed *servo_feed = io.feed("4");
 
 void setup() {
@@ -82,100 +65,51 @@ void setup() {
 }
 
 void loop() {
-
   io.run();
-
-  
- /** tone(SOUND_PIN, 200);
-  delay(500);
-
-  noTone(SOUND_PIN);
-**/
 }
 
 
+/**
+ * Handle Message
+ * 
+ *  Converts message from adafruit io to aninteger, then
+ *  triggers appropriate action
+ */
 void handleMessage(AdafruitIO_Data *data) {
 
   int input = data->toInt();
 
-
-  Serial.print("Recieved: ");
-  Serial.println(input);
+  // ------------ For testing -------------
+    Serial.print("Recieved: ");
+    Serial.println(input);
+  // --------------------------------------
   
   switch(input){
     case 1:
-      leds[0].setRGB(100,0,0);
-      leds[1].setRGB(100,0,0);
-      FastLED.show();
-      chirp();
+      spook();
       break;
     case 2:
-      leds[0].setRGB(0,100,0);
-      leds[1].setRGB(0,100,0);
-      FastLED.show();
-      meow();
+      scare();
       break;
     case 3:
-      leds[0].setRGB(0,0,100);
-      leds[1].setRGB(0,0,100);
-      FastLED.show();
-      ruff();
+      traumatizeForLife();
       break;
     default:
       break;
   }
-/**
-  if(angle < 0)
-    angle = 0;
-  else if(angle > 180)
-    angle = 180;
-    
-  Serial.println("Angle: ");
-  Serial.print(angle);
-  Serial.println();
-  servo.write(angle);
-
-  // LEDS stuff
-  
-  leds[0].setRGB(100,angle,angle);
-  leds[1].setRGB(100,angle,angle);
-  FastLED.show();
-
-  //tone(SOUND_PIN, angle);
-  playTone(5100,40);
-  playTone(1664,150);
-  //delay(500);
-
-  //noTone(SOUND_PIN);
-  
-
-  arf();
-  delay(200);
-  chirp();
-  delay(200);
-  meow();
-  delay(200);
-  meow2();
-  delay(200);
-  mew();
-  delay(200);
-  ruff();
-  delay(200);
-  FastLED.clear();
-**/
-
-  FastLED.delay(1000 / UPDATES_PER_SECOND);
 }
 
 
 /**
  * STATE 1
- * 
- * Spooky squak followed by
  */
 void spook()
 {
-  
+  leds[0].setRGB(100,0,0);
+  leds[1].setRGB(100,0,0);
+  FastLED.show();
+  chirp();
+  FastLED.delay(1000 / UPDATES_PER_SECOND);
 }
 
 /**
@@ -183,7 +117,11 @@ void spook()
  */
 void scare()
 {
-  
+  leds[0].setRGB(0,100,0);
+  leds[1].setRGB(0,100,0);
+  FastLED.show();
+  meow();
+  FastLED.delay(1000 / UPDATES_PER_SECOND);
 }
 
 /**
@@ -191,8 +129,23 @@ void scare()
  */
 void truamatizeForLife()
 {
-  
+  leds[0].setRGB(0,0,100);
+  leds[1].setRGB(0,0,100);
+  FastLED.show();
+  ruff();
+  FastLED.delay(1000 / UPDATES_PER_SECOND);
 }
+
+
+
+
+
+
+
+
+
+
+// ------------------------- REPLACE WITH JINGLES ----------------------------
 
 void arf() {    // dog arf
   uint16_t i;
@@ -252,3 +205,5 @@ void playTone(uint16_t tone1, uint16_t duration) {
      delayMicroseconds(tone1);
   }     
 }
+
+// -------------------------------------------------------------------------------

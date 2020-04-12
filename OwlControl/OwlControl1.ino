@@ -167,6 +167,33 @@ void handleMessage(AdafruitIO_Data *data) {
   FastLED.delay(1000 / UPDATES_PER_SECOND);
 }
 
+
+/**
+ * STATE 1
+ * 
+ * Spooky squak followed by
+ */
+void spook()
+{
+  
+}
+
+/**
+ * STATE 2
+ */
+void scare()
+{
+  
+}
+
+/**
+ * STATE 3
+ */
+void truamatizeForLife()
+{
+  
+}
+
 void arf() {    // dog arf
   uint16_t i;
   playTone(890,25);          // "a"    (short)

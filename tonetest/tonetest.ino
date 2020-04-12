@@ -114,6 +114,7 @@ void loop()
     delay(noteDuration1);
     tone(speakerPin, NOTE_F2);
     delay(noteDuration2);
+    noTone(speakerPin);
     delay(noteDuration2);
   }
    for (int i = 0; i < 16; i++)

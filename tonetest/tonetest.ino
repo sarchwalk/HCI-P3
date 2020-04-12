@@ -108,6 +108,7 @@ void setup()
  
 void loop()
 {
+  
   //jaws theme
   for (int i = 0; i < 4; i++) {
     tone(speakerPin, NOTE_E2);
@@ -129,6 +130,77 @@ void loop()
   noTone(speakerPin);
   //end of jaws theme
 
+
+
+
+  //spooky scary skeletons
+  tone(speakerPin, NOTE_G4); 
+  delay(noteDuration1);
+  noTone(speakerPin);
+  tone(speakerPin, NOTE_G4); 
+  delay(noteDuration1);
+  tone(speakerPin, NOTE_FS4); 
+  delay(noteDuration1);
+  noTone(speakerPin);
+  tone(speakerPin, NOTE_FS4);
+  delay(noteDuration1);
+  tone(speakerPin, NOTE_B3);
+  delay(noteDuration1);
+  tone(speakerPin, NOTE_D4);
+  delay(noteDuration2);
+  tone(speakerPin, NOTE_B3);
+  delay(noteDuration2);
+  delay(noteDuration1);
+  noTone(speakerPin);
+  tone(speakerPin, NOTE_B3);
+  delay(noteDuration1);
+  tone(speakerPin, NOTE_G4);
+  delay(noteDuration2);
+  noTone(speakerPin);
+  tone(speakerPin, NOTE_G4);
+  delay(noteDuration2);
+  delay(noteDuration1);
+  tone(speakerPin, NOTE_FS4);
+  delay(noteDuration1);
+  noTone(speakerPin);
+  tone(speakerPin, NOTE_FS4);
+  delay(noteDuration1);
+  tone(speakerPin, NOTE_B3);
+  delay(noteDuration1);
+  //end of spooky skeletons
+
+
+
+
+  
+ //halloween theme
  
+  for (int i = 0; i < 4; i++) {
+    tone(speakerPin, NOTE_CS6);
+    delay(noteDuration2);
+    tone(speakerPin, NOTE_FS5);
+    delay(noteDuration2);
+    tone(speakerPin, NOTE_FS5);
+    delay(noteDuration2);
+    tone(speakerPin, NOTE_CS6);
+    delay(noteDuration2);
+    tone(speakerPin, NOTE_FS5);
+    delay(noteDuration2);
+    tone(speakerPin, NOTE_FS5);
+    delay(noteDuration2);
+    tone(speakerPin, NOTE_CS6);
+    delay(noteDuration2);
+    tone(speakerPin, NOTE_FS5);
+    delay(noteDuration2);
+    tone(speakerPin, NOTE_CD6);
+    delay(noteDuration2);
+    tone(speakerPin, NOTE_FS5);
+    delay(noteDuration2);
+  }
+  tone(speakerPin, NOTE_FS5);
+  delay(noteDuration3);
+  noTone(speakerPin);
+  //end of halloween theme
+
  
 }

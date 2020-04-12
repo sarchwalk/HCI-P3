@@ -93,15 +93,13 @@ Adafruit Arduino - Lesson 10. Simple Sounds
 
 int speakerPin = 12;
  
-int numTones = 10;
-//int tones[] = {261, 277, 294, 311, 330, 349, 370, 392, 415, 440};
-//            mid C  C#   D    D#   E    F    F#   G    G#   A
 
 //https://www.arduino.cc/en/Tutorial/toneMelody
 
-int noteDuration1 = 1000 / 4;
-int noteDuration2 = 1000 / 8;
-int noteDuration3 = 1000 / 1;
+int noteDuration1 = 2000 / 4;
+int noteDuration2 = 2000 / 8;
+int noteDuration3 = 2000 / 1;
+int noteDuration4 = 2000 / 2;
 
 void setup()
 {
@@ -110,16 +108,26 @@ void setup()
  
 void loop()
 {
+  //jaws theme
   for (int i = 0; i < 4; i++) {
-    tone(speakerPin, NOTE_E2, noteDuration1);
-    tone(speakerPin, NOTE_F2, noteDuration2);
+    tone(speakerPin, NOTE_E2);
+    delay(noteDuration1);
+    tone(speakerPin, NOTE_F2);
+    delay(noteDuration2);
     delay(noteDuration2);
   }
    for (int i = 0; i < 16; i++)
   {
-    tone(speakerPin, NOTE_E2, noteDuration2);
-    tone(speakerPin, NOTE_F2, noteDuration2);
+    tone(speakerPin, NOTE_E2);
+    delay(noteDuration2);
+    tone(speakerPin, NOTE_F2);
+    delay(noteDuration2);
   }
-  tone(speakerPin, NOTE_E2, noteDuration3);
+  tone(speakerPin, NOTE_E2);
+  delay(noteDuration3);
   noTone(speakerPin);
+  //end of jaws theme
+
+ 
+ 
 }
